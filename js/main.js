@@ -120,7 +120,8 @@ function multipleChoiceTopics() {
     "multipleChoiceSubject",
     [
       ["A", "B", "D"],
-      ["A", "B", "C"]
+      ["A", "B", "C"],
+      ["A", "B"]
     ],
     2,
     10
@@ -142,6 +143,16 @@ function multipleChoiceTopics() {
   if (answer2.length == value2.length) {
     var diffB = _.difference(value2, answer2);
     if (_.isEmpty(diffB)) {
+      multipleChoiceSubject.scores += multipleChoiceSubject.scorePerSubject;
+    }
+  }
+
+  var multipleChoiceSubject3 = new MultipleChoiceSubject("check_ans_3");
+  var value3 = multipleChoiceSubject3.calculation();
+  var answer3 = multipleChoiceSubject.answer[2];
+  if (answer3.length == value3.length) {
+    var diffC = _.difference(value3, answer3);
+    if (_.isEmpty(diffC)) {
       multipleChoiceSubject.scores += multipleChoiceSubject.scorePerSubject;
     }
   }
