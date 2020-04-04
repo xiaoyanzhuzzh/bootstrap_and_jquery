@@ -59,7 +59,21 @@ function Get_scores() {
     trueOrFalseTopics() +
     shortAnswerTopics();
   $("#scores").text(value);
+  $("#assessments").text(getAssessment(value));
   $("#divScores").addClass("text-danger");
+  $("#divAssessment").addClass("text-danger");
+}
+
+function getAssessment(value) {
+  if(value >= 100) {
+    return "5";
+  } else if (value >= 75 && value <= 100) {
+    return "4";
+  } else if(value >= 40 && value <= 75) {
+    return "3";
+  } else {
+    return "2";
+  }
 }
 
 function fullInTopics() {
