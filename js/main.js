@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  studentLoading();
   $("#btnSubmit").on("click", function() {
     if (hasEmptyRequiredInput()) {
       $("#alert").modal("show");
@@ -8,6 +9,36 @@ $(document).ready(function() {
     return false;
   });
 });
+
+function setStudent() {
+  $('.student').on('click', function() {
+    $('#studentClass').attr('value', $(this).attr('data-class'));
+    $('#studentNumber').attr('value', $(this).attr('data-id'));
+    $('#studentName').attr('value', $(this).text());
+  });
+
+  $('#dropdownMenu1').attr('disable');
+}
+
+function studentLoading() {
+  var students = [
+    new Student('Pavel Sokolov', 0, 11),
+    new Student('Ilya Solovev', 1, 11),
+    new Student('Ilya Erofeev', 2, 10),
+  ];
+  var studentsHtml = '';
+
+  students.forEach(s => {
+    studentsHtml += `
+    <li class='student' data-id=${s.id} data-class=${s.className}>
+      <a>${s.name}</a>
+    </li>`
+  });
+  
+  $('.dropdown-menu').append(studentsHtml);
+  setStudent();
+
+}
 
 function inputsInformation(inputs) {
   var text = "";
